@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Slack notification SUCCESS
-        uses: HUSNAINGAUHER/custom_google_chat_v2@v0.5
+        uses: HUSNAINGAUHER/CustomGoogleChatV2@v0.5
         env:
           SERVICE_NAME: User
           SERVICE_URL: https://user_prod.kisaangroup.pk
