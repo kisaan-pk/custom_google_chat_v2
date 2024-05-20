@@ -14,6 +14,8 @@ jobs:
     if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps:
+      - uses: kceb/pull-request-url-action@v1
+        id: pr-url
       - uses: actions/checkout@v4
       - name: Slack notification SUCCESS
         uses: kisaan-pk/custom_google_chat_v2@v4
@@ -22,5 +24,6 @@ jobs:
           SOURCE: Github Action
           ENVIRONMENT: Production
           PULL_REQUEST: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ steps.pr-url.outputs.url }}
         with:
           args: "Lint checks *SUCCESSFUL!*\nfrom {{ GITHUB_ACTOR }} at {{ GITHUB_REPOSITORY }}"
