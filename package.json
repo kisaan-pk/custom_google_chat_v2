@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/HUSNAINGAUHER/CustomGoogleChatV2.git",
+  "scripts": {
+    "test": "node index.js"
+  },
   "author": "Husnain Gauher <husnain.gauher31@gmail.com> ",
   "license": "MIT",
   "dependencies": {
