@@ -67,7 +67,7 @@ const CardContent = {
                         "knownIcon": "TICKET"
                       },
                       "topLabel": "Pull Request",
-                      "text": `<b>${process.env.PULL_REQUEST}</b>`
+                      "text": `<a href=${process.env.PR_URL}><b>${process.env.PULL_REQUEST}</b></a>`
                     }
                   }
                 ]
