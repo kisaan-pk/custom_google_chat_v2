@@ -20,6 +20,6 @@ jobs:
           SERVICE_NAME: User
           SOURCE: Github Action
           ENVIRONMENT: Production
-          WORKFLOW: Deploy to AWS ECS | user | prod
+          PULL_REQUEST: ${{ github.event.pull_request.title }}
         with:
           args: "Lint checks *SUCCESSFUL!*\nfrom {{ GITHUB_ACTOR }} at {{ GITHUB_REPOSITORY }}"
