@@ -25,6 +25,6 @@ jobs:
           ENVIRONMENT: Production
           PULL_REQUEST: ${{ github.event.pull_request.title }}
           PR_URL: ${{ steps.pr-url.outputs.url }}
-          WEBHOOK: ${{ secrets.WEBHOOK_URL }}
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
         with:
           args: "Lint checks *SUCCESSFUL!*\nfrom {{ GITHUB_ACTOR }} at {{ GITHUB_REPOSITORY }}"
