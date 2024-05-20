@@ -13,6 +13,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
+      - uses: 8BitJonny/gh-get-current-pr@1.4.0
+        id: PR
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # Verbose setting SHA when using Pull_Request event trigger to fix #16
+          sha: ${{ github.event.pull_request.head.sha }}
+          # Only return if PR is still open
+          filterOutClosed: true
+      - run: echo "Your PR is ${prNumber} and its JSON is ${prJSON}"
+        if: success() && steps.PR.outputs.number
+        env:
+          prNumber: ${{ steps.PR.outputs.number }}
+          # JSON object with the full PR object
+          prJSON: ${{ steps.PR.outputs.pr }}
+          # Direct access to common PR properties
+          prUrl: ${{ steps.PR.outputs.pr_url }}
+          prTitle: ${{ steps.PR.outputs.pr_title }}
+          prBody: ${{ steps.PR.outputs.pr_body }}
+          prCreatedAt: ${{ steps.PR.outputs.pr_created_at }}
+          prMergedAt: ${{ steps.PR.outputs.pr_merged_at }}
+          prClosedAt: ${{ steps.PR.outputs.pr_closed_at }}
+          prLabel: ${{ steps.PR.outputs.pr_labels }}
       - uses: actions/checkout@v4
       - name: Slack notification SUCCESS
         uses: kisaan-pk/custom_google_chat_v2@v4
@@ -20,6 +43,6 @@ jobs:
           SERVICE_NAME: User
           SOURCE: Github Action
           ENVIRONMENT: Production
-          PULL_REQUEST: ${{ github.event.pull_request.title }}
+          PULL_REQUEST: ${{ env.prTitle }}
         with:
           args: "Lint checks *SUCCESSFUL!*\nfrom {{ GITHUB_ACTOR }} at {{ GITHUB_REPOSITORY }}"
