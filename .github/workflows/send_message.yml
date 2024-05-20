@@ -13,13 +13,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Slack notification SUCCESS
         uses: kisaan-pk/custom_google_chat_v2@v3
         env:
           SERVICE_NAME: User
-          SERVICE_URL: https://user_prod.kisaangroup.pk
-          ENVIROMMENT: Production
+          SOURCE: Github Action
+          ENVIRONMENT: Production
           WORKFLOW: Deploy to AWS ECS | user | prod
         with:
           args: "Lint checks *SUCCESSFUL!*\nfrom {{ GITHUB_ACTOR }} at {{ GITHUB_REPOSITORY }}"
