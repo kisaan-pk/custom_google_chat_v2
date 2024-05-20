@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Slack notification SUCCESS
-        uses: kisaan-pk/custom_google_chat_v2@v3
+        uses: kisaan-pk/custom_google_chat_v2@v4
         env:
           SERVICE_NAME: User
           SOURCE: Github Action
