@@ -2,7 +2,7 @@
   "name": "custom_google_chat_v2",
   "version": "1.0.1",
   "main": "index.js",
-  "repository": "https://github.com/HUSNAINGAUHER/CustomGoogleChatV2.git",
+  "repository": "https://github.com/HUSNAINGAUHER/CustomGoogleChatV2.git ",
    "engines": {
     "node": ">=8.3.0"
   },
