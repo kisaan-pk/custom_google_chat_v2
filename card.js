@@ -32,7 +32,7 @@ const CardContent = {
                         "knownIcon": "BOOKMARK"
                       },
                       "topLabel": "Environment",
-                      "text": `<b>${process.env.ENVIROMENT}</b>`
+                      "text": `<b>${process.env.ENVIRONMENT}</b>`
                     }
                   }
                 ]
