@@ -1,0 +1,25 @@
+name: Notification on push
+
+on:
+  push:
+    branches:
+      - master
+      - main # ✊🏿
+
+env:
+  CI: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Slack notification SUCCESS
+        uses: HUSNAINGAUHER/custom_google_chat_v2@v0.5
+        env:
+          SERVICE_NAME: User
+          SERVICE_URL: https://user_prod.kisaangroup.pk
+          ENVIROMMENT: Production
+          WORKFLOW: Deploy to AWS ECS | user | prod
+        with:
+          args: "Lint checks *SUCCESSFUL!*\nfrom {{ GITHUB_ACTOR }} at {{ GITHUB_REPOSITORY }}"
