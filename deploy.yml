@@ -1,0 +1,23 @@
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send deployment notification
+        id: notification
+        run: |
+          DEPLOYMENT_ID=$(node index.js)
+          echo "DEPLOYMENT_ID=$DEPLOYMENT_ID" >> $GITHUB_ENV
+          
+      - name: Update ECS task definition
+        run: |
+          # Your existing ECS update commands
+          # Add the DEPLOYMENT_ID to your container environment variables
+          aws ecs update-task-definition --container-definitions '[{
+            "name": "your-container",
+            "environment": [
+              {
+                "name": "DEPLOYMENT_ID",
+                "value": "${{ env.DEPLOYMENT_ID }}"
+              }
+            ]
+          }]' 
