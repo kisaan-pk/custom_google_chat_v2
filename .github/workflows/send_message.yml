@@ -1,17 +1,12 @@
 name: Notification on push
 
-on:
-  pull_request:
-    branches:
-      - main
-    types: [closed]
+on: push
 
 env:
   CI: true
 
 jobs:
   build:
-    if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps:
       - uses: kceb/pull-request-url-action@v1
